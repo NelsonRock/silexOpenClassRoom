@@ -1,6 +1,6 @@
 <?php
 
-namespace silex\Domain
+namespace silex\Domain;
 
 class Article 
 {
@@ -27,32 +27,32 @@ class Article
 
     public function getId()
     {
-        return $this->$id;
+        return $this->id;
     }
 
-    publilc function setId($id)
+    public function setId($id)
     {
-        $this->$id = $id;
+        $this->id = $id;
     }
 
     public function getTitle()
     {
-        return $this->$title;
+        return $this->title;
     }
 
-    publilc function setTitle($title)
+    public function setTitle($title)
     {
-        $this->$id = $title;
+        $this->title = $title;
     }
 
     public function getContent()
     {
-        return $this->$content;
+        return $this->content;
     }
 
     public function setContent($content)
     {
-        $this->$id = $  ;
+        $this->content = $content  ;
     }
 
 
