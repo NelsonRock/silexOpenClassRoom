@@ -11,7 +11,7 @@ ExceptionHandler::register();
 $app->register(new Silex\Provider\DoctrineServiceProvider());
 // TwigServiceProvider para utilizar twig templates
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
-    'twig.path' => __DIR__.'/../views';
+    'twig.path' => __DIR__.'/../views',
 ));
 // Register services.
 $app['dao.article'] = $app->share(function ($app) {
