@@ -21,7 +21,7 @@ abstract class DAO
         $this->db = $db;
     }
 
-    protected function getDB()
+    protected function getDb()
     {
         return $this->db;
     }
@@ -31,6 +31,6 @@ abstract class DAO
      *
      * 
      */
-    protected function buildDomainObject(array $row);
+    protected abstract function buildDomainObject(array $row);
 
 }
