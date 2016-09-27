@@ -2,10 +2,9 @@
 
 namespace silex\DAO;
 
-use Doctrine\DBAL\Connection;
 use silex\Domain\Article;
 
-class ArticleDAO
+class ArticleDAO extends DAO
 {
     /**
     * Database Connection
