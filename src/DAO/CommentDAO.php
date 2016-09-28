@@ -8,12 +8,21 @@ class CommentDAO extends DAO
 {
     private $articleDAO;
 
+    private $userDAO;
+    
     public function setArticleDAO(ArticleDAO $articleDAO)
     {
         $this->articleDAO = $articleDAO;
     }
+
+    public function setUserDAO(UserDAO $userDAO)
+    {
+        $this->userDAO = $userDAO;
+    }
+
+
     /**
-     * Return a list of all Comments, sorted by date (most recent first).
+     * Return a list of all Comments, sorted b)y date (most recent first).
      *
      * @return array A list of all Comments.
      */
@@ -42,12 +51,17 @@ class CommentDAO extends DAO
         $comment = new Comment();
         $comment->setId($row['com_id']);
         $comment->setContent($row['com_content']);
-        $comment->setAuthor($row['com_author']);
         
         if (array_key_exists('art_id', $row)) {
             $articleId = $row['art_id'];
             $article = $this->articleDAO->find($articleId);
             $comment->setArticle($article);
+        }
+
+        if (array_key_exists('user_id', $row)) {
+            $userId = $row['user_id'];
+            $user = $this->userDAO->find($userId);
+            $comment->setAuthor($user);
         }
         return $comment;
     }
