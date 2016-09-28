@@ -1,6 +1,6 @@
 drop table if exists t_comment;
-drop table if exists t_article;
 drop table if exists t_user;
+drop table if exists t_article;
 
 create table t_article (
 art_id integer not null primary key auto_increment,
@@ -18,7 +18,6 @@ create table t_user (
 
 create table t_comment (
     com_id integer not null primary key auto_increment,
-    com_author varchar(100) not null,
     com_content varchar(500) not null,
     art_id integer not null,
     usr_id integer not null,
