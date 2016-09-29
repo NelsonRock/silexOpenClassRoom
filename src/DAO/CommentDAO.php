@@ -20,11 +20,28 @@ class CommentDAO extends DAO
         $this->userDAO = $userDAO;
     }
 
-
     /**
      * Return a list of all Comments, sorted b)y date (most recent first).
      *
      * @return array A list of all Comments.
+     */
+     public function findAll()
+     {
+         $sql = "select * from t_comment order by com_id desc";
+         $result = $this->getDb()->fetchAll($sql);
+         $entities = array();
+         foreach($result as $row) {
+             $id = $row['com_id'];
+             $entities[$id] = $this->buildDomainObject($row);
+         }
+         return $entities;
+     }
+
+    
+    /**
+     * Return a list of all Articles, sorted b)y date (most recent first).
+     *
+     * @return array A list of all Articles.
      */
     public function findAllByArticle($articleId) {
         $article = $this->articleDAO->find($articleId);
