@@ -48,9 +48,16 @@ class CommentDAO extends DAO
             'usr_id' => $comment->getAuthor()->getid(),
             'com_content' => $comment->getContent()
         );
-
+        // update comment
         if ($comment->getId()) {
             $this->getDb()->update('t_comment', $commentData, array('com_id' => $comment->getId()));
+        }
+        else {
+            // insert for first time comment 
+            $this->getDb()->insert('t_comment', $commentData);
+            //set the id in the entity 
+            $id = $this->getDb()->getId();
+            $this->setId($id);
         }
     }
 
