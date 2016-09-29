@@ -28,7 +28,7 @@ class CommentDAO extends DAO
      */
     public function findAllByArticle($articleId) {
         $article = $this->articleDAO->find($articleId);
-        $sql = "select com_id, com_author, com_content from t_comment where art_id=? order by com_id";
+        $sql = "select com_id, com_content, usr_id from t_comment where art_id=? order by com_id";
         $result = $this->getDb()->fetchAll($sql, array($articleId));
         // Convert query result to an array of domain objects
         $comments = array();
