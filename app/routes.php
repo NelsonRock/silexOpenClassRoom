@@ -24,7 +24,7 @@ $app->match('/article/{id}', function ($id, Request $request) use ($app) {
         $commentForm->handleRequest($request);
         if ($commentForm->isSubmitted() && $commentForm->isValid() ) {
             $app['dao.comment']->save($comment);
-            $app['session']->getFlashBag()->add('succes', 'Tu comentario fue registrado con exito');
+            $app['session']->getFlashBag()->add('success', 'Tu comentario fue registrado con exito');
         }
         $commentFormView = $commentForm->createView();
     }
