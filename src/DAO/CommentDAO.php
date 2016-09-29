@@ -56,8 +56,8 @@ class CommentDAO extends DAO
             // insert for first time comment 
             $this->getDb()->insert('t_comment', $commentData);
             //set the id in the entity 
-            $id = $this->getDb()->getId();
-            $this->setId($id);
+            $id = $this->getDb()->lastInsertId();
+            $comment->setId($id);
         }
     }
 
