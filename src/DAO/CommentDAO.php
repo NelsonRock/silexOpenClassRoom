@@ -44,9 +44,9 @@ class CommentDAO extends DAO
     public function save(Comment $comment)
     {
         $commentData = array(
-            'art_id' = $comment->getArticle()->getId(),
-            'usr_id' = $comment->getAuthor()->getid(),
-            'com_content' = $comment->getContent()
+            'art_id' => $comment->getArticle()->getId(),
+            'usr_id' => $comment->getAuthor()->getid(),
+            'com_content' => $comment->getContent()
         );
 
         if ($comment->getId()) {
