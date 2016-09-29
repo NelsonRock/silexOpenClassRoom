@@ -5,7 +5,7 @@
 {% block content %}
     {% for article in articles %}
         <article>
-            <h2><a href="{{ path('article', { 'id': article.id }) }}" class="articleTitle" >{{ article.title }}</a></h2>
+            <h2><a href="{{ path('article' , {'id': article.id}) }}" class="articleTitle" >{{ article.title }}</a></h2>
             <p>{{ article.content }}</p>
         </article>
     {% endfor %}

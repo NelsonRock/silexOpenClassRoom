@@ -23,7 +23,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'logout' => true,
             'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
             'users' => $app->share(function () use ($app) {
-                return new MicroCMS\DAO\UserDAO($app['db']);
+                return new silex\DAO\UserDAO($app['db']);
             }),
         ),
     ),

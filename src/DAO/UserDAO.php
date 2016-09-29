@@ -1,12 +1,12 @@
 <?php
 
-namespace MicroCMS\DAO;
+namespace silex\DAO;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
-use MicroCMS\Domain\User;
+use silex\Domain\User;
 
 class UserDAO extends DAO implements UserProviderInterface
 {
@@ -15,7 +15,7 @@ class UserDAO extends DAO implements UserProviderInterface
      *
      * @param integer $id The user id.
      *
-     * @return \MicroCMS\Domain\User|throws an exception if no matching user is found
+     * @return \silex\Domain\User|throws an exception if no matching user is found
      */
     public function find($id) {
         $sql = "select * from t_user where usr_id=?";
@@ -58,7 +58,7 @@ class UserDAO extends DAO implements UserProviderInterface
      */
     public function supportsClass($class)
     {
-        return 'MicroCMS\Domain\User' === $class;
+        return 'silex\Domain\User' === $class;
     }
 
     /**
@@ -67,7 +67,7 @@ class UserDAO extends DAO implements UserProviderInterface
      * @param array $row The DB row containing User data.
      * @return \MicroCMS\Domain\User
      */
-    protected function buildDomainObject($row) {
+    protected function buildDomainObject(array $row) {
         $user = new User();
         $user->setId($row['usr_id']);
         $user->setUsername($row['usr_name']);

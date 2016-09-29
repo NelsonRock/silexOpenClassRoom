@@ -14,7 +14,7 @@ class Comment
     /**
     * Comment author
     *
-    * @var string
+    * @var \silex\Domain\User
     */
     private $author;
     
@@ -28,7 +28,7 @@ class Comment
     /**
     * Associated article
     *
-    * @var \sile\Domain\Article
+    * @var \silex\Domain\Article
     */
     private $article;
 

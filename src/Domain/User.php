@@ -1,6 +1,6 @@
 <?php
 
-namespace MicroCMS\Domain;
+namespace silex\Domain;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 

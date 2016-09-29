@@ -45,7 +45,7 @@ class CommentDAO extends DAO
      * Create an Comment object based on a DB row.
      *
      * @param array $row The DB row containing Comment data.
-     * @return \MicroCMS\Domain\Comment
+     * @return \silex\Domain\Comment
      */
     protected function buildDomainObject(array $row) {
         $comment = new Comment();
@@ -58,8 +58,8 @@ class CommentDAO extends DAO
             $comment->setArticle($article);
         }
 
-        if (array_key_exists('user_id', $row)) {
-            $userId = $row['user_id'];
+        if (array_key_exists('usr_id', $row)) {
+            $userId = $row['usr_id'];
             $user = $this->userDAO->find($userId);
             $comment->setAuthor($user);
         }

@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\Request;
      return $app['twig']->render('index.html.twig', array('articles' => $articles));
  })->bind('home');
 
-
 $app->get('/article/{id}', function ($id) use ($app) {
     $article = $app['dao.article']->find($id);
     $comments = $app['dao.comment']->findAllByArticle($id);
@@ -17,6 +16,6 @@ $app->get('/article/{id}', function ($id) use ($app) {
 $app->get('/login', function (Request $request) use ($app) {
     return $app['twig']->render('login.html.twig', array(
         'error' => $app['security.last_error']($request),
-        'last_username' => $app['session']->get('_security.last_username'),
+        ',last_username' => $app['session']->get('_security.last_username'),
     ));
 })->bind('login');
