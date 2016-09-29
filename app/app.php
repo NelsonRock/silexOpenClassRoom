@@ -32,7 +32,9 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         ),
     ),
     // Config back-office zone /AccessDecisionManagerInterface
-    'security.role_hierarchy' => array(),
+    'security.role_hierarchy' => array(
+        'ROLE_ADMIN' => array('ROLE_USER'),
+    ),
     'security.access_rules' => array(
         array('^/admin', 'ROLE_ADMIN'),
         ),
