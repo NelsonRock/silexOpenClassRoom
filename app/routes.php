@@ -1,8 +1,8 @@
 <?php
 
 use Symfony\Component\HttpFoundation\Request;
-use silex\Domain\Comment;
-use silex\Form\Type\CommentType;
+use \silex\Domain\Comment;
+use \silex\Form\Type\CommentType;
 
 //Home page
  $app->get('/', function () use ($app) {
@@ -14,26 +14,26 @@ use silex\Form\Type\CommentType;
 $app->match('/article/{id}', function ($id, Request $request) use ($app) {
     $article = $app['dao.article']->find($id);
     $commentFormView = null;
-    if ($app['security.authorization_checker']->isGranted('IS_AUTHENTICADED_FULLY')) {
-        //User can poste Comment
+    if ($app['security.authorization_checker']->isGranted('IS_AUTHENTICATED_FULLY')) {
+        // A user is fully authenticated : he can add comments
         $comment = new Comment();
         $comment->setArticle($article);
         $user = $app['user'];
         $comment->setAuthor($user);
         $commentForm = $app['form.factory']->create(new CommentType(), $comment);
         $commentForm->handleRequest($request);
-        if ($commentForm->isSubmitted() && $commentForm->isValid() ) {
+        if ($commentForm->isSubmitted() && $commentForm->isValid()) {
             $app['dao.comment']->save($comment);
-            $app['session']->getFlashBag()->add('success', 'Tu comentario fue registrado con exito');
+            $app['session']->getFlashBag()->add('success', 'Your comment was succesfully added.');
         }
         $commentFormView = $commentForm->createView();
     }
     $comments = $app['dao.comment']->findAllByArticle($id);
-    return $app['twig']->render('article.html.twig' , array(
-         'article'=> $article, 'comments' => $comments,
-         'comments' => $comments,
-         'commentForm' => $commentFormView
-         ));
+    return $app['twig']->render('article.html.twig', array(
+        'article' => $article, 
+        'comments' => $comments,
+        'commentForm' => $commentFormView
+        ));
 })->bind('article');
 
 $app->get('/login', function (Request $request) use ($app) {
