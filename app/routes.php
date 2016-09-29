@@ -42,3 +42,11 @@ $app->get('/login', function (Request $request) use ($app) {
         'last_username' => $app['session']->get('_security.last_username'),
     ));
 })->bind('login');
+
+
+$app->get('/admin', function () use ($app) {
+    $articles = $app['dao.article']->findAll();
+    return $app['twig']->render('admin.html.twig', array(
+        'articles' => $articles
+    ));
+})->bind('admin');
